@@ -12,8 +12,27 @@ def atm_menu(name):
     print("------------------------------------------")
 
 print("          === REGISTER: Automated Teller Machine ===          ")
-name = input("Enter name to register: ")
-pin = input("Enter PIN: ")
+
+while True:
+    max_user_chars = 10
+    name = input("Enter name to register: ")
+
+    if len(name) <= max_user_chars:
+        print(f"Welcome {name}!")
+        break
+    
+    else: print(f"Maximum characters allowed is {max_user_chars}")
+
+while True:
+    max_pin_chars = 4
+    pin = input("Enter PIN: ")
+
+    if len(pin) == max_pin_chars:
+        print("\nUser registered successfully!")
+        break
+
+    else: print(f"\nPIN must be {max_pin_chars} characters long")
+
 balance = (float(0))
 
 print(f"{name} has been registered with a starting balance of ${balance}")
@@ -37,12 +56,10 @@ while True:
         account.show_balance(balance)
 
     elif option == "2":
-        account.deposit(balance)
         balance = account.deposit(balance)
         print(account.show_balance(balance))
 
     elif option == "3":
-        account.withdraw(balance)
         balance = account.withdraw(balance)
         print(account.show_balance(balance))
 

@@ -3,14 +3,19 @@ def show_balance(balance):
 
 def deposit(balance):
     amount = float(input("Enter amount to deposit: $"))
-    balance =+ amount
+    balance += amount
     return balance
 
 def withdraw(balance):
     withdraw = float(input("Enter amount to withdraw: $"))
-    balance =- withdraw
-    return balance
+    if withdraw > balance:
+        print("Withdrawal cannot be grater than existing balance.")
+        return balance
+    
+    else:
+        balance -= withdraw
+        return balance
 
 def logout(name):
-    print(f"Goodbye{name}")
+    print(f"Goodbye {name}")
     exit()
